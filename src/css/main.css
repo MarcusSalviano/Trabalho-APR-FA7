@@ -93,13 +93,23 @@ textarea {
 .jumbotron {
     width: 600px;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 1%;
     margin-left: auto;
     margin-right: auto;
 }
 .table{
     margin-top: 20px;
+}
 
+.mainScreen {
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
 }
 
 .span{

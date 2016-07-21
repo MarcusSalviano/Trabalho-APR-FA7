@@ -1,78 +1,64 @@
 <!doctype html>
-<html ng-app="AppHello">
+<html ng-app="AppForecast" xmlns="http://www.w3.org/1999/html">
 	<head>
-		<title>Hello AngularJS</title>
+		<title>Previsão do Tempo FA7</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css" >
         <link rel="stylesheet" type="text/css" href="css/main.css" >
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.css">
-
     </head>
 
+	<body ng-controller="ForecastController as ctrl">
+    <div class="panel panel-default mainScreen" >
+
+        <div class="panel-body" >
+            <h1> PREVISAO DO TEMPO </h1>
+
+            <h2 class="md-title"><b>Cidade:</b> {{location.city.name}}</h2>
+            <br layout="row" >
+
+                <label>
+                    <b>Coordenadas:</b> {{location.city.coord.lon}}, {{location.city.coord.lat}}
+                </label>
+
+                <br/>
+
+                <label>
+                    <b>Pa&iacutes:</b> {{location.city.country}}
+                </label>
+
+                <br/>
+
+                <div>
+                    <label>{{location.list[0].temp.day}}&degC</label>
+                    <img src={{weatherImg}} />
+                </div>
+
+                </br>
+
+                <label>Previs&atildeo do Tempo Para o Dia</label>
 
 
-	<body ng-controller="HelloController as ctrl">
-
-    <div class="jumbotron" ng-controller="HelloController as ctrl"  >
-        <div align="left">
-            <h2 class="md-title"><b>Cidade: </b> {{location.city.name}}</h2>
-            <div layout="row">
-
-                    <label>Coordenadas: {{location.city.coord.lon}} , {{location.city.coord.lat}}</label>
-                <p/>
-                    <label>Pais: {{location.city.country}}</label>
-
-                <p/>
-
-                    <label>Popula&ccedil&atildeo: {{location.city.population}}</label>
-
-                <p/>
-
-                <label>Data</label>
-                <select class="form-control" ng-model="location.days" ng-options="item.dt*1000 | date:'dd-MM-yyyy' for item  in location.list" >
-
-                    <option value="" >Selecione uma data</option>
+                <select class="form-control" ng-model="location.days" ng-options="item.dt*1000 | date:'dd/MM/yyyy' for item  in location.list" >
+                    <option value="">Selecione uma data</option>
                 </select>
 
-                <div >
-                    <p/>
-                    <span ><b>Dia</b> {{location.days.temp.day}}</span>
-
-                    </p>
-                    <span><b> Temperatura m&aacutexima </b> {{location.days.temp.max}}</span>
-                    </p>
-                    <span><b>Temperatura minima</b> {{location.days.temp.min}}</span>
-                    </p>
-                    <span ><b>Temperatura manh&atilde</b> {{location.days.temp.morn}}</span>
-                    </p>
-                    <span ><b>Temperatura noite</b> {{location.days.temp.night}}</span>
-
+                <div>
+                    <span ><b>M&eacutedia </b> {{location.days.temp.day}}&degC</span>
+                    </br>
+                    <span><b>M&aacutexima </b> {{location.days.temp.max}}&degC</span>
+                    </br>
+                    <span><b>M&iacutenima</b> {{location.days.temp.min}}&degC</span>
                 </div>
-
-                </div>
-
-
 
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-
-
-    <!-- Angular Material Javascript now available via Google CDN; version 1.0.7 used here -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
-    <script src="js/hello.js"></script>
+    <script src="js/forecast.js"></script>
 
 	</body>
 </html>
