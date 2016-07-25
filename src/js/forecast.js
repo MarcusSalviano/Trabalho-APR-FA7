@@ -10,3 +10,14 @@ app.controller("ForecastController", function($scope, $http) {
         $scope.days=$scope.location.list;
     });
 });
+
+app.controller('HideShowController', function() {
+    
+    this.showHideForecast = function(location){
+        if(location == null) {
+            return false;
+        } else {
+            return true;
+        }
+    };
+});

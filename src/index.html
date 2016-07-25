@@ -8,57 +8,63 @@
     </head>
 
 	<body ng-controller="ForecastController as ctrl">
-    <div class="panel panel-default mainScreen" >
+        <div class="panel panel-default mainScreen" >
+            <div class="panel-heading">
+                <h1 class="panel-title"> PREVIS&AtildeO DO TEMPO </h1>
+            </div>
 
-        <div class="panel-body" >
-            <h1> PREVISAO DO TEMPO </h1>
+            <div class="panel-body" >
+                <h2>
+                    <b>Cidade:</b> {{location.city.name}}
+                </h2>
 
-            <h2 class="md-title"><b>Cidade:</b> {{location.city.name}}</h2>
-            <br layout="row" >
+                <h2>
+                    <div>
+                        <img src={{weatherImg}} />
+                        <label>{{location.list[0].temp.day}} &degC</label>
+                    </div>
+                </h2>
 
                 <label>
                     <b>Coordenadas:</b> {{location.city.coord.lon}}, {{location.city.coord.lat}}
                 </label>
 
-                <br/>
+                </br>
 
                 <label>
                     <b>Pa&iacutes:</b> {{location.city.country}}
                 </label>
 
-                <br/>
-
-                <div>
-                    <label>{{location.list[0].temp.day}}&degC</label>
-                    <img src={{weatherImg}} />
-                </div>
-
-                </br>
+                </br></br>
 
                 <label>Previs&atildeo do Tempo Para o Dia</label>
-
 
                 <select class="form-control" ng-model="location.days" ng-options="item.dt*1000 | date:'dd/MM/yyyy' for item  in location.list" >
                     <option value="">Selecione uma data</option>
                 </select>
 
-                <div>
-                    <span ><b>M&eacutedia </b> {{location.days.temp.day}}&degC</span>
-                    </br>
-                    <span><b>M&aacutexima </b> {{location.days.temp.max}}&degC</span>
-                    </br>
-                    <span><b>M&iacutenima</b> {{location.days.temp.min}}&degC</span>
+                <div class="panel panel-default forecastPanel"
+                     ng-controller="HideShowController as hsctrl"
+                     ng-show="hsctrl.showHideForecast(location.days)">
+
+                    <div class="panel-body" >
+                        <label><b>M&eacutedia: </b> {{location.days.temp.day}} &degC</label>
+                        </br>
+                        <label><b>M&aacutexima: </b> {{location.days.temp.max}} &degC</label>
+                        </br>
+                        <label><b>M&iacutenima: </b> {{location.days.temp.min}} &degC</label>
+                    </div>
+
                 </div>
 
+                </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
-    <script src="js/forecast.js"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
+        <script src="js/forecast.js"></script>
 	</body>
 </html>
